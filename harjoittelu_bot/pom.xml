@@ -3,7 +3,17 @@
   <groupId>harjoittelu_bot</groupId>
   <artifactId>harjoittelu_bot</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
+
+  <properties>
+    <!-- Javan versionumero -->
+    <maven.compiler.target>1.9</maven.compiler.target>
+    <maven.compiler.source>1.9</maven.compiler.source>
+
+    <!-- Projektin merkistökoodaus -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
   <dependencies>
   	<dependency>
         <groupId>org.telegram</groupId>
@@ -36,5 +46,32 @@
   	</dependency>
   
   </dependencies>
-  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <archive>
+                <manifest>
+                  <mainClass>
+                    harjoittelu_bot.MainClass
+                  </mainClass>
+                </manifest>
+              </archive>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
